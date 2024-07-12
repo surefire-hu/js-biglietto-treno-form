@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('calcola').addEventListener('click', calcolaPrezzo);
+    const form = document.getElementById('ticketForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        calcolaPrezzo();
+    });
 });
 
 function calcolaPrezzo() {
@@ -16,12 +20,20 @@ function calcolaPrezzo() {
     } else if (eta >= 65) {
         prezzoFinale = prezzoBase * 0.6; 
     } else {
-        prezzoFinale = prezzoBase;
+        prezzoFinale = prezzoBase;           
     }
 
     // Arrotonda il prezzo finale a due decimali
     prezzoFinale = prezzoFinale.toFixed(2);
 
-    // Mostra il risultato nella console
-    console.log("Il prezzo del tuo biglietto è: " + prezzoFinale + " €");
+    // Aggiorna il risultato nella pagina
+    document.getElementById('km-result').textContent = km;
+    document.getElementById('eta-result').textContent = eta;
+    document.getElementById('prezzo-result').textContent = prezzoFinale;
+
+    // Mostra il risultato
+    document.getElementById('result').classList.remove('hidden');
+
+    // Log del risultato nella console
+    console.log(`Il prezzo del biglietto per ${km} km e ${eta} anni è: ${prezzoFinale} €`);
 }

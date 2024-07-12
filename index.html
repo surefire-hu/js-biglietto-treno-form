@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>titolo</title>
+    <title>treno form</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <input type="number" id="km" placeholder="Chilometri da percorrere">
-    <input type="number" id="eta" placeholder="Età del passeggero">
-    <button id="calcola">Calcola prezzo</button>
+    <div class="container">
+        <h1>Calcolatore del prezzo del biglietto</h1>
+        <form id="ticketForm">
+            <div class="form-group">
+                <label for="km">Chilometri da percorrere:</label>
+                <input type="number" id="km" name="km" required min="1" >
+            </div>
+            <div class="form-group">
+                <label for="eta">Età del passeggero:</label>
+                <input type="number" id="eta" name="eta" required min="0" max="150">
+            </div>
+            <button type="submit" id="calcola">Calcola prezzo</button>
+        </form>
+        <div id="result" class="hidden">
+            <h2>Riepilogo del biglietto:</h2>
+            <p>Chilometri da percorrere: <span id="km-result"></span> km</p>
+            <p>Età del passeggero: <span id="eta-result"></span> anni</p>
+            <p>Prezzo del biglietto: <span id="prezzo-result"></span> €</p>
+        </div>
+    </div>
     <script src="js/script.js"></script>
 </body>
 </html>
