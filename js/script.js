@@ -1,39 +1,34 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('ticketForm');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        calcolaPrezzo();
-    });
+document.getElementById('ticketForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    calculateTicket();
 });
 
-function calcolaPrezzo() {
-    let km = parseFloat(document.getElementById('km').value);
-    let eta = parseInt(document.getElementById('eta').value);
+function calculateTicket() {
+    const name = document.getElementById('name').value;
+    const surname = document.getElementById('surname').value;
+    const age = parseInt(document.getElementById('age').value);
+    const km = parseFloat(document.getElementById('km').value);
 
-    // Calcolo del prezzo base
-    let prezzoBase = km * 0.21;
+    const basePrice = km * 0.21;
+    let discount = 0;
+    let finalPrice = basePrice;
 
-    // Applica lo sconto in base all'età
-    let prezzoFinale;
-    if (eta < 18) {
-        prezzoFinale = prezzoBase * 0.8; 
-    } else if (eta >= 65) {
-        prezzoFinale = prezzoBase * 0.6; 
-    } else {
-        prezzoFinale = prezzoBase;           
+    if (age < 18) {
+        discount = 20;
+        finalPrice *= 0.8;
+    } else if (age > 65) {
+        discount = 40;
+        finalPrice *= 0.6;
     }
 
-    // Arrotonda il prezzo finale a due decimali
-    prezzoFinale = prezzoFinale.toFixed(2);
+    document.getElementById('resultName').textContent = name;
+    document.getElementById('resultSurname').textContent = surname;
+    document.getElementById('resultAge').textContent = age;
+    document.getElementById('resultKm').textContent = km;
+    document.getElementById('resultBasePrice').textContent = basePrice.toFixed(2);
+    document.getElementById('resultDiscount').textContent = discount;
+    document.getElementById('resultFinalPrice').textContent = finalPrice.toFixed(2);
 
-    // Aggiorna il risultato nella pagina
-    document.getElementById('km-result').textContent = km;
-    document.getElementById('eta-result').textContent = eta;
-    document.getElementById('prezzo-result').textContent = prezzoFinale;
-
-    // Mostra il risultato
     document.getElementById('result').classList.remove('hidden');
-
-    // Log del risultato nella console
-    console.log(`Il prezzo del biglietto per ${km} km e ${eta} anni è: ${prezzoFinale} €`);
+    document.getElementById('ticketForm').classList.add('hidden');
 }

@@ -7,6 +7,7 @@
 
 body {
     background: lightcoral;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -18,6 +19,18 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     margin-top: 50px;
+}
+
+.container span {
+    font-size: 40px;
+    color: #BF091A;
+    font-weight: bold;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -66,4 +79,8 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+img {
+    width: 100px;
 }

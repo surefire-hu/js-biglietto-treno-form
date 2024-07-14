@@ -8,23 +8,36 @@
 </head>
 <body>
     <div class="container">
-        <h1>Calcolatore del prezzo del biglietto</h1>
+        <div class="flex-c">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Guangzhou_Metro_icon.svg/1739px-Guangzhou_Metro_icon.svg.png" alt="logo">
+            <span>Metro</span>
+            <h1>Calcolatore del prezzo del biglietto</h1>
+        </div>
         <form id="ticketForm">
-            <div class="form-group">
-                <label for="km">Chilometri da percorrere:</label>
-                <input type="number" id="km" name="km" required min="1" >
-            </div>
-            <div class="form-group">
-                <label for="eta">Età del passeggero:</label>
-                <input type="number" id="eta" name="eta" required min="0" max="150">
-            </div>
-            <button type="submit" id="calcola">Calcola prezzo</button>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" required><br>
+            
+            <label for="surname">Cognome:</label>
+            <input type="text" id="surname" required><br>
+            
+            <label for="age">Età:</label>
+            <input type="number" id="age" required min="0" max="150"><br>
+            
+            <label for="km">Km da percorrere:</label>
+            <input type="number" id="km" required min="1"><br>
+            
+            <button type="submit">Calcola Prezzo</button>
         </form>
+    
         <div id="result" class="hidden">
-            <h2>Riepilogo del biglietto:</h2>
-            <p>Chilometri da percorrere: <span id="km-result"></span> km</p>
-            <p>Età del passeggero: <span id="eta-result"></span> anni</p>
-            <p>Prezzo del biglietto: <span id="prezzo-result"></span> €</p>
+            <h2>Dettagli Biglietto:</h2>
+            <p>Nome: <span id="resultName"></span></p>
+            <p>Cognome: <span id="resultSurname"></span></p>
+            <p>Età: <span id="resultAge"></span> anni</p>
+            <p>Distanza: <span id="resultKm"></span> km</p>
+            <p>Prezzo Base: €<span id="resultBasePrice"></span></p>
+            <p>Sconto: <span id="resultDiscount"></span>%</p>
+            <p>Prezzo Finale: €<span id="resultFinalPrice"></span></p>
         </div>
     </div>
     <script src="js/script.js"></script>
